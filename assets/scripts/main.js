@@ -54,6 +54,17 @@ function initializeServiceWorker() {
   // B5. TODO - In the event that the service worker registration fails, console
   //            log that it has failed.
   // STEPS B6 ONWARDS WILL BE IN /sw.js
+
+
+
+
+
+
+
+
+
+
+  
 }
 
 /**
@@ -69,6 +80,8 @@ async function getRecipes() {
   // A1. TODO - Check local storage to see if there are any recipes.
   //            If there are recipes, return them.
   /**************************/
+    return JSON.parse(localStorage.getItem('recipes')) || [];
+
   // The rest of this method will be concerned with requesting the recipes
   // from the network
   // A2. TODO - Create an empty array to hold the recipes that you will fetch
@@ -78,6 +91,29 @@ async function getRecipes() {
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
   /**************************/
+  const recipes_to_fetch = [];//A2
+  return new Promise(async(resolve, reject) => {
+      try {//A5
+        for (let i = 0; i < RECIPE_URLS.length; i++) {
+          const url = RECIPE_URLS[i];//A4
+          const response = await fetch(url);//A6
+          const jsonResponse = await response.json();//A7
+          recipes_to_fetch.push(jsonResponse);//A8
+        }
+          localStorage.setItem('recipes', JSON.stringify(recipes_to_fetch));
+          resolve(recipes_to_fetch);//A9
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+        reject(error);
+      }
+
+    });
+
+
+
+
+
+
   // A4-A11 will all be *inside* the callback function we passed to the Promise
   // we're returning
   /**************************/
