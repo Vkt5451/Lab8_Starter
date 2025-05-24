@@ -2,8 +2,8 @@
     "name": "Lab8_Starter",
     "short_name": "Vincent",
     "description": "This is my lab8!",
-    "start_url": "/index.html",
-    "display": "minimal-ui",
+    "start_url": "./index.html",
+    "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#007BFF",
     "icons": [
@@ -29,26 +29,32 @@
       },
       {
         "src": "/assets/images/icons/0-star.svg",
-"type": "image/svg+xml"
+        "sizes": "any",
+        "type": "image/svg+xml"   
       },
       {
         "src": "/assets/images/icons/1-star.svg",
-"type": "image/svg+xml"
+        "sizes": "any", 
+        "type": "image/svg+xml"  
       },
       {
         "src": "/assets/images/icons/2-star.svg",
+        "sizes": "any",  
 "type": "image/svg+xml"
       },
       {
         "src": "/assets/images/icons/3-star.svg",
+        "sizes": "any",   
 "type": "image/svg+xml"
       },
       {
         "src": "/assets/images/icons/4-star.svg",
+        "sizes": "any", 
 "type": "image/svg+xml"
       },
       {
         "src": "/assets/images/icons/5-star.svg",
+        "sizes": "any", 
 "type": "image/svg+xml"
       },
       {
@@ -58,4 +64,3 @@
       }
     ]
   }
-  
