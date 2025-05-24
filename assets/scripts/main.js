@@ -57,7 +57,7 @@ function initializeServiceWorker() {
   if ('serviceWorker' in navigator) {// Service Worker is supported
   window.addEventListener('load', () => {
     // B3: Register './sw.js' as service worker
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker.register('/sw.js')
       .then(registration => {
         console.log('Service Worker registered success:', registration.scope);
       })
