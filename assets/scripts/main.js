@@ -54,17 +54,21 @@ function initializeServiceWorker() {
   // B5. TODO - In the event that the service worker registration fails, console
   //            log that it has failed.
   // STEPS B6 ONWARDS WILL BE IN /sw.js
-
-
-
-
-
-
-
-
-
-
-  
+  if ('serviceWorker' in navigator) {// Service Worker is supported
+  window.addEventListener('load', () => {
+    // B3: Register './sw.js' as service worker
+    navigator.serviceWorker.register('./sw.js')
+      .then(registration => {
+        console.log('Service Worker registered success:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Service Worker registration failed:', error);
+      });
+  });
+  }
+  else{
+    console.log('Service Worker not supported');
+  }
 }
 
 /**
@@ -80,8 +84,8 @@ async function getRecipes() {
   // A1. TODO - Check local storage to see if there are any recipes.
   //            If there are recipes, return them.
   /**************************/
-    return JSON.parse(localStorage.getItem('recipes')) || [];
-
+const cached = JSON.parse(localStorage.getItem('recipes') || 'null');
+if (cached?.length) return cached;
   // The rest of this method will be concerned with requesting the recipes
   // from the network
   // A2. TODO - Create an empty array to hold the recipes that you will fetch
